@@ -42,6 +42,11 @@ const BackEndSkills = () => {
           skillName="Java"
         />
         <SkillItem
+          iconSrc="/../public/Assets/backEnd/webSocket1.png"
+          altText="RestApi"
+          skillName="WebSocket"
+        />
+        <SkillItem
           iconSrc="/../public/Assets/backEnd/api.png"
           altText="RestApi"
           skillName="RestApi"
