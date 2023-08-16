@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '@/components/Navbar'
 import Image from 'next/image'
-import menteeDashboard from "public/Assets/Projects/Mentee/dashboard.png";
+import marcyMerchImg from "public/Assets/Projects/MarcyMerch/landing.png";
 import {RiRadioButtonFill} from 'react-icons/ri'
 import Link from 'next/link';
 const page = () => {
@@ -10,10 +10,10 @@ const page = () => {
       <Navbar />
         <div className='w-screen h-[30vh] lg:h-[40vh] relative' >
             <div className='absolute top-0 left-0 h-[30vh] w-full lg:h-[40vh] bg-black/80 z-10' />
-            <Image className='absolute z-1' layout='fill' objectFit='cover' src={menteeDashboard} alt ='/' />
+            <Image className='absolute z-1' layout='fill' objectFit='cover' src={marcyMerchImg} alt ='/' />
             <div className='absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-2'>
-              <h2 className='py-2'>Mentee.</h2>
-              <h3>React Js / Tailwind / Express / PostgreSQL</h3>
+              <h2 className='py-2'>Marcy Merch</h2>
+              <h3>React Js / Express / PostgreSQL</h3>
             </div>
         </div>
 
@@ -21,10 +21,10 @@ const page = () => {
           <div className='col-span-4'>
             <p>Project</p>
             <h2>Overview</h2>
-            <p className='py-2'>Mentee is an application for high-school graduates or GED holders from underprivileged communities and nontraditional backgrounds looking to build career skills through mentorship and community. Mentees can practice technical code, learn what a career in tech looks like, and receive support from mentors and Mentee friends via live communication throughout their career journey.</p>
-            <p className='py-2'>The application enables Mentees to find a community of mentors and other mentees in a similar trajectory and filter to find users with the same goals. Users log on to the application and are instantly greeted with a table populated with other users, they can filter through to find Mentees or Mentors. Mentors can teach and lead, and mentees can learn, collaborate, and create a network of their choosing. Users can also utilize the inhouse technologies to video-call, text, and even screenshare, for the ease of communication.</p>
+            <p className='py-2'>Marcy Merch is marketplace directed for Marcy Lab students and its supporters to purchase merch that directly funds the educational opportunities of software engineers on their way to change the face of the tech-world.This website hosts a variety of clothing that has the Marcy Lab touch and logo to show out in support for the Marcy Lab School.</p>
+            <p className='py-2'>The application enables users to browse through our selections, add items to thier cart and complete transactions using our integrated Stripe payment system.</p>
             <button className='px-8 py-2 mt-4 mr-8' >Demo</button>
-            <a href='https://github.com/orgs/mentee-marcy/repositories'>
+            <a href='https://github.com/josemazhuvanchery1/MarcyMerch'>
                 <button className='px-8 py-2 mt-4' >Code</button>
             </a>
           </div>
@@ -33,11 +33,11 @@ const page = () => {
               <p className='text-center font-bold pb-2'>Technologies</p>
               <div className='grid grid-cols-3 md:grid-cols-1'>
                 <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> React</p>
-                <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> Tailwind</p>
-                <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> TypeScript</p>
+                <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> Bootstrap</p>
+                <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> Javascript</p>
                 <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> Express</p>
                 <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> PostgreSQL</p>
-                <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> Socket.IO</p>
+                <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> Stripe Api</p>
                 <p className='text-gray-600 py-2 flex items-center'><RiRadioButtonFill className='pr-1' /> JWT</p>
               </div>
             </div>
