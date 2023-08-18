@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState, ChangeEvent,FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import contactImg from "../public/Assets/contact.png";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
@@ -15,6 +15,8 @@ const initState = { name: "", email: "", subject: "", message: "" };
 const Contact = () => {
   const [state, setState] = useState(initState);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [isSent, setIsSent] = useState(false);
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,18 +26,28 @@ const Contact = () => {
       ...prevState,
       [name]: value,
     }));
+
+    setIsSent(false);
   };
   const isFormIncomplete =
-    !state.name ||
-    !state.email ||
-    !state.subject ||
-    !state.message;
+    !state.name || !state.email || !state.subject || !state.message;
   const onSubmit = async () => {
     setIsLoading(true);
-    await sendContactForm(state);
-    
-  };
 
+    try {
+      await sendContactForm(state);
+      setState(initState);
+      setIsSent(true);
+      setError("");
+      console.log("message sent")
+    } catch (error:any) {
+      setIsLoading(false);
+      setError(error.message);
+    }finally {
+      setIsLoading(false); 
+    }
+  };
+  console.log(isSent)
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     onSubmit();
@@ -73,21 +85,21 @@ const Contact = () => {
               <div>
                 <p className="uppercase pt-8">Connect with me</p>
                 <div className="flex items-center justify-between py-4">
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <a href="https://www.linkedin.com/in/jose-mazhuvanchery/">
+                  <a href="https://www.linkedin.com/in/jose-mazhuvanchery/">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <FaLinkedinIn />
-                    </a>
-                  </div>
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <a href="https://github.com/josemazhuvanchery1">
+                    </div>
+                  </a>
+                  <a href="https://github.com/josemazhuvanchery1">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <FaGithub />
-                    </a>
-                  </div>
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <a href="mailto:jose1998mathew@gmail.com">
+                    </div>
+                  </a>
+                  <a href="mailto:jose1998mathew@gmail.com">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <AiOutlineMail />
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                     <BsFillPersonLinesFill />
                   </div>
@@ -101,19 +113,18 @@ const Contact = () => {
           <div className="col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
             <div className="p-4">
               <form>
-                
-                  <div className="flex flex-col">
-                    <label className="uppercase text-sm py-2">Name</label>
-                    <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300"
-                      type="text"
-                      name="name"
-                      value={state.name}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
+                <div className="flex flex-col">
+                  <label className="uppercase text-sm py-2">Name</label>
+                  <input
+                    className="border-2 rounded-lg p-3 flex border-gray-300"
+                    type="text"
+                    name="name"
+                    value={state.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Email</label>
                   <input
@@ -147,16 +158,21 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                {isFormIncomplete && !isLoading && (
+                {error && <p className="text-red-500">{error}</p>}
+                {!error && isFormIncomplete && !isLoading && (
                   <p className="text-red-500">
                     Please fill out all required fields
                   </p>
                 )}
-                <button disabled={isFormIncomplete} onClick={handleButtonClick} className="w-full p-4 text-gray-100 mt-4">
-                  {isLoading ? "Sending..." : "Send Message"}
+                {isSent && <p className="text-green-500">Message has been sent!</p>}
+                <button
+                  disabled={isFormIncomplete}
+                  onClick={handleButtonClick}
+                  className={isSent?"w-full p-4 text-gray-100 mt-4 bg-gradient-to-r from-[#48d354] to-[#b8f6c2]":"w-full p-4 text-gray-100 mt-4"}
+                >
+                  {isLoading ? "Sending..." : isSent ? "Sent!" : "Send Message"}
                 </button>
               </form>
-              
             </div>
           </div>
         </div>
