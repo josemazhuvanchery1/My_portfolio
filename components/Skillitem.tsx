@@ -1,7 +1,12 @@
 import React from 'react';
 import Image from 'next/image'
 
-const SkillItem = ({ iconSrc, altText, skillName }) => (
+interface skillsProps {
+  iconSrc: string,
+  altText: string,
+  skillName: string
+}
+const SkillItem: React.FC<skillsProps> = ({ iconSrc, altText, skillName }) => (
   <div className="p-4 shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
     <div className="grid grid-cols-2 gap-4 justify-center items-center">
       <div className="m-auto">
