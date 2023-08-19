@@ -15,7 +15,7 @@ const generateEmailContent = (data: object) =>{
     },'')
 
     const htmlData = emailTemplate(Object.entries(data).reduce((str,[key,val]) =>{
-        (str += `<h2 class="form-heading" align="left">${formattedKey[key]}</h2><p class="form-answer" align="left">${val}</p>`);
+        (str += `<h1 class="form-heading" align="left">${formattedKey[key]}</h1><p class="form-answer" align="left">${val}</p>`);
         return str
     },''))
 
