@@ -7,7 +7,6 @@ import { AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import Link from "next/link";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
-import internal from "stream";
 import { sendContactForm } from "@/lib/api";
 
 const initState = { name: "", email: "", subject: "", message: "" };
@@ -47,7 +46,7 @@ const Contact = () => {
       setIsLoading(false); 
     }
   };
-  console.log(isSent)
+
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     onSubmit();
@@ -78,8 +77,7 @@ const Contact = () => {
                 <h2 className="py-2">Jose Mazhuvanchery</h2>
                 <p>Full Stack Developer</p>
                 <p className="py-4">
-                  I am available for freelance or full-time positions. Contact
-                  me and let&apos;s talk.
+                  I am available for freelance or full-time positions.
                 </p>
               </div>
               <div>

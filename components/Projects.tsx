@@ -4,6 +4,8 @@ import ProjectItems from "./ProjectItems";
 import menteeDashboard from "../public/Assets/Projects/Mentee/dashboard.png";
 import homeEaseLanding from "../public/Assets/Projects/HomeEase/landingpage.png";
 import marcyMerchProducts from "../public/Assets/Projects/MarcyMerch/products.png";
+import mindfulImg from '../public/Assets/Projects/Mindful/mindful_calendar.png'
+
 const Projects = () => {
   return (
     <div id='projects' className="w-full">
@@ -17,16 +19,25 @@ const Projects = () => {
             title="Mentee."
             backgroundImg={menteeDashboard}
             projectUrl="/mentee"
+            techStack="React TypeScript PostgreSql"
           />
           <ProjectItems
             title="HomeEase"
             backgroundImg={homeEaseLanding}
             projectUrl="/homease"
+            techStack="React TypeScript PostgreSql"
           />
           <ProjectItems
             title="Marcy Merch"
             backgroundImg={marcyMerchProducts}
             projectUrl="/marcymerch"
+            techStack="React JavaScript PostgreSql"
+          />
+          <ProjectItems
+            title="Mindful"
+            backgroundImg={mindfulImg}
+            projectUrl="/mindful"
+            techStack="HTML CSS"
           />
         </div>
       </div>
