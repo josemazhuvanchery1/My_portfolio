@@ -13,6 +13,7 @@ const Navbar = () => {
   const [navBg, setNavBg] = useState("#FCF6F5");
   const [linkColor, setLinkColor] = useState("#1f2937");
   const pathname = usePathname();
+  const [projectNav, setProjNav] = useState(false)
 
   const handleNav = () => {
     setNav(!nav);
@@ -26,11 +27,15 @@ const Navbar = () => {
     ) {
       setNavBg("transparent");
       setLinkColor("#ecf0f3");
+      setProjNav(true);
     } else {
       setNavBg("#FCF6F5");
       setLinkColor("#1f2937");
+      setProjNav(false);
     }
   }, [pathname]);
+
+  
 
   useEffect(() => {
     const handleShadow = () => {
@@ -45,7 +50,7 @@ const Navbar = () => {
     <div
       style={{ backgroundColor: `${navBg}` }}
       className={
-        shadow
+        shadow&&projectNav? 'w-full h-0 z-[100]':shadow
           ? "fixed w-full h-20 shadow-xl z-[100]"
           : "fixed w-full h-20 z-[100]"
       }
